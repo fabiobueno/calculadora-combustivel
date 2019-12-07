@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         calcular.setOnClickListener {
             resultadoConta.text = (gasolina.text.toString().toFloat() * 0.7).toString()
-            Log.i("CALCULADORA", "Valor Gasolina:$gasolina")
-            Log.i("CALCULADORA", "Valor Alcool:$alcool")
-            Log.i("CALCULADORA", "Resultado da Conta:$resultadoConta")
+            Log.i("CALCULADORA", "Valor Gasolina:${gasolina.text}")
+            Log.i("CALCULADORA", "Valor Alcool:${alcool.text}")
+            Log.i("CALCULADORA", "Resultado da Conta:${resultadoConta.text}")
 
             if (resultadoConta.text.toString().toFloat() > alcool.text.toString().toFloat()){
                 qualComprar.text = "Alcool"
