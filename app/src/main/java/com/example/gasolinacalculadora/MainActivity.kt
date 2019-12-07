@@ -11,13 +11,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        gasolina.addTextChangedListener(MoneyTextWatcher(gasolina))
+        alcool.addTextChangedListener(MoneyTextWatcher(alcool))
+        resultadoConta.addTextChangedListener(MoneyTextWatcher(alcool))
+
         calcular.setOnClickListener {
-            resultadoConta.text = (gasolina.text.toString().toFloat() * 0.7).toString()
+            resultadoConta.text = (gasolina.text.toString().replace(",", "").toFloat() * 0.7).toString()
             Log.i("CALCULADORA", "Valor Gasolina:${gasolina.text}")
             Log.i("CALCULADORA", "Valor Alcool:${alcool.text}")
             Log.i("CALCULADORA", "Resultado da Conta:${resultadoConta.text}")
 
-            if (resultadoConta.text.toString().toFloat() > alcool.text.toString().toFloat()){
+            if (resultadoConta.text.toString().toFloat() > alcool.text.toString().replace(",", "").toFloat()){
                 qualComprar.text = "Alcool"
                 Log.i("CALCULADORA", "Compra Alcool")
             }else{
